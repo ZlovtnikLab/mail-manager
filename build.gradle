@@ -1,0 +1,29 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.15'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'de.rcs.mailcontroller'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.apache.camel.springboot:camel-spring-boot-starter:3.20.6'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'org.apache.camel:camel-mail:3.20.6'
+	implementation 'org.apache.camel:camel-jetty:3.20.6'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
