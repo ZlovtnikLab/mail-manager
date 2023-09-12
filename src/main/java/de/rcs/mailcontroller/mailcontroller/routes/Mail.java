@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import java.util.Properties;
+
 @Component
 public class Mail extends RouteBuilder {
 
@@ -17,17 +19,17 @@ public class Mail extends RouteBuilder {
             from("direct:sendMail")
                     .process( exchange -> {
                       exchange.getIn().setBody(exchange.getIn().getBody(String.class));
-                    }).to("smtps://smtp.synchro.com.br?" +
-                            "to=racasantos@icloud.com" +
-                            "&subject=teste" +
-                            "&from=contact@rclabs.de" +
-                            "&username=rafael.cardoso@synchro.com.br" +
-                            "&password=zuv9yfb*PNW.jrg3drd")
+                    }).to("smtps://smtp.gmail.com:465" +
+                            "?username=zlovtnikrcs@gmail.com" +
+                            "&password=bcyx zmmv mzyk vtgx" +
+                            "&debugMode=true" +
+                            "&javaMailProperties.mail.smtps.auth=true" +
+                            "&javaMailProperties.mail.smtps.starttls.enable=true")
                     .process(exchange -> {
                         System.out.println(exchange.getIn().getBody());
                     });
 
-            from("jetty:http://localhost:8081")
+            from("jetty:http://0.0.0.0:8081")
                     .to("direct:sendMail");
 
     }
