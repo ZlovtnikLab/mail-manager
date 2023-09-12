@@ -24,7 +24,8 @@ public class Mail extends RouteBuilder {
                             "&password=bcyx zmmv mzyk vtgx" +
                             "&debugMode=true" +
                             "&javaMailProperties.mail.smtps.auth=true" +
-                            "&javaMailProperties.mail.smtps.starttls.enable=true")
+                            "&javaMailProperties.mail.smtps.starttls.enable=true" +
+                            "&to=racasantos@icloud.com")
                     .process(exchange -> {
                         System.out.println(exchange.getIn().getBody());
                     });

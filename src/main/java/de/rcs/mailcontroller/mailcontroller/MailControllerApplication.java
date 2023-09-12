@@ -10,4 +10,6 @@ public class MailControllerApplication {
 		SpringApplication.run(MailControllerApplication.class, args);
 	}
 
+
+
 }
